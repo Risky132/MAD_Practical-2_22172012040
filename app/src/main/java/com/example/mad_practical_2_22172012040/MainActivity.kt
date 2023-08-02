@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,6 +18,12 @@ class MainActivity : AppCompatActivity() {
     {
         Log.i(TAG, massage)
         Toast.makeText(this, massage, Toast.LENGTH_SHORT).show()
+        val obj : ConstraintLayout?=findViewById(R.id.mainconstraint)
+        if (obj!=null)
+        {
+            Snackbar.make(obj,massage,Snackbar.LENGTH_SHORT).show()
+        }
+
     }
 
     override fun onStart() {
@@ -23,6 +31,25 @@ class MainActivity : AppCompatActivity() {
         showMassage("OnStart method is called")
     }
 
+    override fun onPause() {
+        super.onPause()
+        showMassage("OnPause method is called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        showMassage("OnStop method is called")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        showMassage("OnRestart method is called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        showMassage("OnDestroy method is called")
+    }
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
     }
